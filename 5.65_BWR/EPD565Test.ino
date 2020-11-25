@@ -1,12 +1,12 @@
 /* 
- *  This example code is for PDi 5.65" BWR EPD on EXT2 board which is verified by Arduino M0 Pro/TI Launchpaad MSP-EXP432P401R.
- *  This Sketch uses 40336 bytes of program storage space. TI Launchpaad MSP-EXP432P401R(Maximum is 262144 bytes).
+ *  This example code is for PDi 5.65" BWR EPD on EXT2 board which is verified by Arduino M0 Pro/TI Launchpaad EK-TM4C123GXL, MSP-EXP430F5529LP.
  *  And it sould be able to be compile on Arduino/Energia IDE supported Board.
  *  Like Arduino Due or Arduino Uno(Need a level shifter 5V -> 3V for EXT2 board)  
  *  For more information about PDi EPD and EXT2 board, please visit 
  *  http://www.pervasivedisplays.com/
  *  https://www.pervasivedisplays.com/product/epd-extension-kit-gen-2-ext2/
  */
+
 #include <SPI.h>
 #if defined(ENERGIA)
 // Valid pins for LaunchPad on Energia
@@ -20,6 +20,27 @@
 #define BS_PIN 17        //EXT2 BOARD J5 pin 17
 //#define CSS_PIN 2     // EXT2 BOARD J5 pin 2 Slave CSB only required of 9.7"/12" with one 24pin FPC operation
 //#define CSS_PIN 13     // EXT2 BOARD J5 pin 13 Slave CSB only required of 9.7/12" with 34pin FFC bridge board(2FPC design) operation
+
+// SPI protocl setup
+void sendIndexData( uint8_t index, const uint8_t *data, uint32_t len ) {
+  SPI.begin (); 
+  SPI.setDataMode(SPI_MODE3);
+  SPI.setClockDivider(SPI_CLOCK_DIV32);
+  SPI.setBitOrder(MSBFIRST);
+  digitalWrite( DC_PIN, LOW );      //DC Low
+  digitalWrite( CS_PIN, LOW );      //CS Low
+  delayMicroseconds(500);
+  SPI.transfer( index );
+  delayMicroseconds(500);
+  digitalWrite( CS_PIN, HIGH );     //CS High
+  digitalWrite( DC_PIN, HIGH );     //DC High
+  digitalWrite( CS_PIN, LOW );      //CS Low
+  delayMicroseconds(500);
+  for ( int i = 0; i < len; i++ ) SPI.transfer( data[ i ] );
+  delayMicroseconds(500);
+  digitalWrite( CS_PIN, HIGH );     //CS High
+}
+
 #else
 // Valid pins for Arduino board, like M0 Pro
 #define SCL_PIN 13   //EXT2 BOARD J5 pin 7
@@ -32,24 +53,9 @@
 #define BS_PIN 4        //EXT2 BOARD J5 pin 17
 //#define CSS_PIN 6    //EXT2 BOARD J5 pin 2 Slave CSB
 //#define CSS_PIN 5     // EXT2 BOARD J5 pin 13 Slave CSB only required of 9.7/12" with 34pin FFC bridge board(2FPC design) operation
-#endif
+
 //EXT2 BOARD J5 pin 20 connected to GND
-//EXT2 BOARD J5 pin 17 connected to GND for 4 wire SPI
 //EXT2 BOARD J5 pin 1 connected to 3V3
-
-
-#include <avr/pgmspace.h>
-#include "Images/Image_565_frame_01.c"
-#include "Images/Image_565_frame_02.c"
-#include "Images/Image_565_frame_W.c"
-#include "Images/Image_565_frame_B.c"
-#define Frame1        (uint8_t *)&Image_565_frame_01
-#define Frame2        (uint8_t *)&Image_565_frame_02
-#define FrameW        (uint8_t *)&Image_565_frame_W
-#define FrameB        (uint8_t *)&Image_565_frame_B
-
-extern const uint8_t blackBuffer [];
-extern const uint8_t redBuffer [];
 
 // Software SPI setup
 void softwareSpi( uint8_t data ) {
@@ -65,18 +71,27 @@ void softwareSpi( uint8_t data ) {
 void sendIndexData( uint8_t index, const uint8_t *data, uint32_t len ) {
   digitalWrite( DC_PIN, LOW );      //DC Low
   digitalWrite( CS_PIN, LOW );      //CS Low
-    delayMicroseconds(500);
   softwareSpi( index );
-    delayMicroseconds(500);
   digitalWrite( CS_PIN, HIGH );     //CS High
   digitalWrite( DC_PIN, HIGH );     //DC High
   digitalWrite( CS_PIN, LOW );      //CS High
-    delayMicroseconds(500);
   for ( int i = 0; i < len; i++ ) softwareSpi( data[ i ] );
-    delayMicroseconds(500);
   digitalWrite( CS_PIN, HIGH );     //CS High
 }
+#endif
 
+#include <avr/pgmspace.h>
+#include "Images/Image_565_frame_01.c"
+#include "Images/Image_565_frame_02.c"
+#include "Images/Image_565_frame_W.c"
+#include "Images/Image_565_frame_B.c"
+#define Frame1        (uint8_t *)&Image_565_frame_01
+#define Frame2        (uint8_t *)&Image_565_frame_02
+#define FrameW        (uint8_t *)&Image_565_frame_W
+#define FrameB        (uint8_t *)&Image_565_frame_B
+
+extern const uint8_t blackBuffer [];
+extern const uint8_t redBuffer [];
 
 //setup function runs once on startup
 void setup() {            
