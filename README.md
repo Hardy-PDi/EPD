@@ -1,6 +1,6 @@
  ![image](https://github.com/Hardy-PDi/ePaper_PervasiveDisplays/blob/master/e-paper-displays-low-temperature-PDI033-768x487.png)
  
- * The example code is for PDi iTC EPD(1.54"/2.13"/2.66"/2.71"/2.87"/3.7"/4.2"/4.37"/5.8"/7.4"/9.7"/12") on EXT2 board, it's verified by Arduino M0 Pro.
+ * The example code is for PDi iTC EPD(1.54"/2.13"/2.66"/2.71"/2.87"/3.7"/4.2"/4.37"/5.8"/7.4"/9.7"/12") on EXT2 board, it's verified by Arduino M0 Pro/TI Launchpaad EK-TM4C123GXL.
  * And it sould be able to run on Arduino IDE supported Board, such as Arduino Due or Arduino Uno(Need a level shifter 5V -> 3V for EXT2 board)
  *  https://github.com/arduino/arduino/wiki/unofficial-list-of-3rd-party-boards-support-urls
 
@@ -34,7 +34,7 @@
 | (eTC) 1.44/ 2.0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | - |
 | (eTC) 1.9/ 2.60/ 2.71 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | - |
 | (iTC) 2.15 | 1 | 0 | 1 | 0 | 0 | 0 | 0 | - |
-| (iTC) 1.54/ 2.13/ 2.66/ 2.71/ 2.87/ 3.7/ 4.2/ 4.37/ 5.8/ 7.4/ 9.7/ 12.0 | 0 | 1 | 0 | 1 | 0 | 1 | 0 | - |
+| (iTC) 1.54/ 2.13/ 2.66/ 2.71/ 2.87/ 2.9 hr/ 3.7/ 4.2/ 4.37/ 5.65/ 5.8/ 7.4/ 9.7/ 12.0 | 0 | 1 | 0 | 1 | 0 | 1 | 0 | - |
 
  #  Support
  *  For more information about PDi EPD and EXT2 board, please visit [PERVASIVE DISPLAYS, INC. (龍亭新技股份有限公司)](http://www.pervasivedisplays.com/)
