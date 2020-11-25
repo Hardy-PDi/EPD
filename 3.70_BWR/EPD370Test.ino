@@ -1,6 +1,5 @@
 /* 
- *  This example code is for PDi 1.54" BWR EPD on EXT2 board which is verified by Arduino M0 Pro/TI Launchpaad EK-TM4C123GXL, MSP-EXP430F5529LP.
- *  This Sketch uses 9242 bytes of program storage space.
+ *  This example code is for PDi 3.7" BWR EPD on EXT2 board which is verified by Arduino M0 Pro/TI Launchpaad EK-TM4C123GXL, MSP-EXP430F5529LP.
  *  And it sould be able to be compile on Arduino/Energia IDE supported Board.
  *  Like Arduino Due or Arduino Uno(Need a level shifter 5V -> 3V for EXT2 board)  
  *  For more information about PDi EPD and EXT2 board, please visit 
