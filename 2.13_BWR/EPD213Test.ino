@@ -3,7 +3,7 @@
  *  And it sould be able to be compile on Arduino/Energia IDE supported Board.
  *  Like Arduino Due or Arduino Uno(Need a level shifter 5V -> 3V for EXT2 board)  
  *  For more information about PDi EPD and EXT2 board, please visit 
- *  http://www.pervasivedisplays.com/
+ *  https://www.pervasivedisplays.com/
  *  https://www.pervasivedisplays.com/product/epd-extension-kit-gen-2-ext2/
  */
 
@@ -92,7 +92,9 @@ void setup() {
   pinMode( CS_PIN, OUTPUT );
   pinMode( DC_PIN, OUTPUT );
   pinMode( RESET_PIN, OUTPUT );
+  pinMode( BS_PIN, OUTPUT );
   digitalWrite( PNLON_PIN, HIGH );    //PANEL_ON# = 1
+  digitalWrite( BS_PIN, LOW );
   pinMode( BUSY_PIN, INPUT );         //All Pins 0
   delay( 5 );                         //Delay 5ms
   digitalWrite( RESET_PIN, HIGH );    //RES# = 1
@@ -111,6 +113,8 @@ void setup() {
   sendIndexData( 0xe5, data7, 1 );    //Input Temperature: 25C
   uint8_t data6[] = { 0x02 };         
   sendIndexData( 0xe0, data6, 1 );    //Active Temperature
+  uint8_t data5[] = { 0xcf, 0x8d };         
+  sendIndexData( 0x00, data5, 2 );    //PSR
 
 // Send image data
   Serial.println("2");
