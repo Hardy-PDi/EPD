@@ -1,6 +1,6 @@
 /* 
  *  This example code is for 2.13" Spectra EPD of Pervasive Displays Inc (PDi) on EXT2 board which is verified by Arduino M0 Pro/TI LaunchPad EK-TM4C123GXL, MSP-EXP430F5529LP.
- *  And it should be able to be compiled on Arduino/Energia IDE supported Boards.
+ *  And it should be able to be compiled on Arduino/Energia IDE supported boards.
  *  You will need a level shifter 5V --> 3V if using Arduino Due or Arduino Uno to work with EXT2 board.  
  *  For more information about PDi EPD products and EXT2 board, please visit 
  *  https://www.pervasivedisplays.com/products/ and https://www.pervasivedisplays.com/product/epd-extension-kit-gen-2-ext2/
@@ -95,9 +95,9 @@ void setup() {
   digitalWrite( PNLON_PIN, HIGH );    //PANEL_ON# = 1
   digitalWrite( BS_PIN, LOW );
   pinMode( BUSY_PIN, INPUT );         //All Pins 0
-  delay( 5 );                         //Delay 5ms
+  delay( 5 );
   digitalWrite( RESET_PIN, HIGH );    //RES# = 1
-  delay( 5 );                         //Delay 5ms
+  delay( 5 ); 
   digitalWrite( RESET_PIN, LOW );
   delay( 10 );
   digitalWrite( RESET_PIN, HIGH );
@@ -116,11 +116,9 @@ void setup() {
   sendIndexData( 0x00, data5, 2 );    //PSR
 
 // Send image data
-  Serial.println("2");
   sendIndexData( 0x10, blackBuffer, 2756 ); //First frame
   sendIndexData( 0x13, redBuffer, 2756 );   //Second frame
 
-  Serial.println("3");
   delay( 50 );
   uint8_t data8[] = { 0x00 };
   sendIndexData( 0x04, data8, 1 );    //Power on
@@ -136,7 +134,6 @@ void setup() {
   digitalWrite( SDA_PIN, LOW );
   digitalWrite( SCL_PIN, LOW );
   digitalWrite( RESET_PIN, LOW );
-  Serial.println("4");
 }
 
 void loop() {
