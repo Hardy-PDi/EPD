@@ -17,9 +17,9 @@
 #define RESET_PIN 9  //EXT2 BOARD J5 pin 10
 #define BUSY_PIN 8   //EXT2 BOARD J5 pin 8
 #define PNLON_PIN 7  //EXT2 BOARD J5 pin 11
-#define BS_PIN 4     // EXT2 Baord J5 pin 17
+#define BS_PIN 4     //EXT2 Baord J5 pin 17
 //#define CSS_PIN 6    //EXT2 BOARD J5 pin 2 Slave CSB only required of 9.7"/12" with one 24pin FPC operation
-//#define CSS_PIN 5    // EXT2 BOARD J5 pin 13 Slave CSB only required of 9.7/12" with 34pin FFC connection board(2 FPCs design) operation
+//#define CSS_PIN 5    //EXT2 BOARD J5 pin 13 Slave CSB only required of 9.7/12" with 34pin FFC connection board(2 FPCs design) operation
                        //EXT2 BOARD J5 pin 20 connecte to GND
                        //EXT2 BOARD J5 pin 17 connecte to GND for 4 wire SPI
                        //EXT2 BOARD J5 pin 12 connecte to GND for stablize/off the discharge circuit
@@ -40,7 +40,7 @@
 | (iTC) 1.54/ 2.13/ 2.66/ 2.71/ 2.87/ 3.7/ 4.2/ 4.37/ 5.8/ 7.4/ 9.7/ 12.0 | 0 | 1 | 0 | 1 | 0 | 1 | 0 | - |
 
  #  Technical Support
- *  For more information about PDi EPDs and EXT2 board, please visit [Pervasive Displays, inc. (龍亭新技股份有限公司)](https://www.pervasivedisplays.com/)
- *  [PDi Product Line up (iTC EPD)](https://www.pervasivedisplays.com/products/)
+ *  For more information, please visit [Pervasive Displays, inc. (龍亭新技股份有限公司)](https://www.pervasivedisplays.com/)
+ *  [PDi Product Line up](https://www.pervasivedisplays.com/products/)
  *  [EPD Extension Kit Gen 2 (EXT2)](https://www.pervasivedisplays.com/product/epd-extension-kit-gen-2-ext2/)
  *  [24/7 Support Service](https://www.pervasivedisplays.com/technical-support/)
